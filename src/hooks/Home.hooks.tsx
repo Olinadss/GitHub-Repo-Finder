@@ -1,3 +1,5 @@
+"use no memo";
+
 import { useEffect, useState, type SyntheticEvent } from "react";
 import {
   ServiceGithub,
@@ -15,14 +17,29 @@ export function useHome() {
   const [filterName, setFilterName] = useState<string>("");
   const [sort, setSort] = useState<string>("stars-desc");
   const [userGitHub, setUserGitHub] = useState<IGetUserGitHub>();
+  const [notFound, setNotFound] = useState(false);
   const [userReposGitHub, setReposUserGitHub] = useState<IGetReposUserGitHub[]>(
     [],
   );
 
   useEffect(() => {
     if (!usernameParam) return;
-    serviceGitHub.getUserGitHub(usernameParam).then(setUserGitHub);
-    serviceGitHub.getReposUserGitHub(usernameParam).then(setReposUserGitHub);
+
+    serviceGitHub.getUserGitHub(usernameParam).then((user) => {
+      if (!user) {
+        setNotFound(true);
+        setUserGitHub(undefined);
+        setReposUserGitHub([]);
+        return;
+      }
+
+      setNotFound(false);
+      setUserGitHub(user);
+
+      serviceGitHub.getReposUserGitHub(usernameParam).then((repos) => {
+        setReposUserGitHub(repos);
+      });
+    });
   }, [usernameParam]);
 
   function handleSearchChange(value: string) {
@@ -39,8 +56,9 @@ export function useHome() {
 
   async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!search.trim()) return;
-    navigate(`/user/${search.trim()}`);
+    const trimmed = search.trim();
+    if (!trimmed) return;
+    navigate(`/user/${trimmed}`);
   }
 
   const filteredAndSortedRepos = [...(userReposGitHub ?? [])]
@@ -65,5 +83,6 @@ export function useHome() {
     handleFilterChange,
     handleSortChange,
     filteredAndSortedRepos,
+    notFound,
   };
 }
