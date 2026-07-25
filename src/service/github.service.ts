@@ -30,14 +30,30 @@ export interface IGetReposUserGitHub {
 export class ServiceGithub {
   constructor() {}
 
-  async getUserGitHub(username: string): Promise<IGetUserGitHub> {
-    const { data } = await api.get(`/users/${username}`);
-    return data;
+  async getUserGitHub(username: string): Promise<IGetUserGitHub | null> {
+    const response = await api.get(`/users/${username}`, {
+      validateStatus: (status) => status < 500,
+    });
+
+    console.log("response", response);
+
+    if (response.status === 404) {
+      return null;
+    }
+
+    return response.data;
   }
 
   async getReposUserGitHub(username: string): Promise<IGetReposUserGitHub[]> {
-    const { data } = await api.get(`/users/${username}/repos`);
-    return data;
+    const response = await api.get(`/users/${username}/repos`, {
+      validateStatus: (status) => status < 500,
+    });
+
+    if (response.status === 404) {
+      return [];
+    }
+
+    return response.data;
   }
 
   async getReposDetailGitHub(repoFullName: string) {

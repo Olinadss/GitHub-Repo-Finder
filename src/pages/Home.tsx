@@ -2,6 +2,7 @@ import { CardListRepo } from "../components/CardListRepo";
 import { Header } from "../components/Header";
 import { RepoListFilter } from "../components/RepoListFilter";
 import { Sidebar } from "../components/Sidebar";
+import { UserNotFound } from "../components/UserNotFound";
 import { useHome } from "../hooks/Home.hooks";
 import styles from "./Home.module.css";
 
@@ -16,7 +17,10 @@ export function Home() {
     handleFilterChange,
     handleSortChange,
     filteredAndSortedRepos,
+    notFound,
   } = useHome();
+
+  console.log("notFound", notFound);
 
   return (
     <>
@@ -25,6 +29,9 @@ export function Home() {
         search={search}
         handleSubmit={handleSubmit}
       />
+
+      {notFound && <UserNotFound />}
+
       {userGitHub && (
         <div className={styles.wrapper}>
           <Sidebar userGitHub={userGitHub} />
