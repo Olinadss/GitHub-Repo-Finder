@@ -19,7 +19,7 @@
 }
 
 .input::placeholder {
-  color: #7c7c8a;
+  color: var(--gray-600);
 }
 
 @media (max-width: 576px) {
