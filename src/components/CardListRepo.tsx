@@ -1,35 +1,24 @@
+import type { IGetReposUserGitHub } from "../service/github.service";
 import styles from "./CardListRepo.module.css";
 
 interface IRepoCardProps {
-  name: string;
-  description: string | null;
-  stars: number;
-  language: string | null;
-  url: string;
+  repo: IGetReposUserGitHub;
 }
 
-export function CardListRepo({
-  name,
-  description,
-  stars,
-  language,
-  url,
-}: IRepoCardProps) {
+export function CardListRepo({ repo }: IRepoCardProps) {
   return (
-    <a href={url} className={styles.card}>
-      <h3 className={styles.name}>{name}</h3>
+    <a href={repo.html_url} className={styles.card}>
+      <h3 className={styles.name}>{repo.name}</h3>
 
-      {description && <p className={styles.description}>{description}</p>}
+      <p className={styles.description}>{repo.description ?? "-"}</p>
 
       <div className={styles.meta}>
         <span className={styles.stars}>
-          <i className="bi bi-star-fill" /> {stars}
+          <i className="bi bi-star-fill" /> {repo.stargazers_count}
         </span>
 
-        {language && (
-          <span className={styles.language}>
-            <span className={styles.languageDot} /> {language}
-          </span>
+        {repo.language && (
+          <span className={styles.language}>{repo.language}</span>
         )}
       </div>
     </a>
