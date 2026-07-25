@@ -58,6 +58,15 @@ export function useHome() {
     e.preventDefault();
     const trimmed = search.trim();
     if (!trimmed) return;
+
+    const user = await serviceGitHub.getUserGitHub(trimmed);
+
+    if (!user) {
+      setNotFound(true);
+      return;
+    }
+
+    setNotFound(false);
     navigate(`/user/${trimmed}`);
   }
 
