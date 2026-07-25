@@ -1,0 +1,29 @@
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: #202024;
+  border: 1px solid #323238;
+  color: #e1e1e6;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: #7c7c8a;
+}
+
+.input:focus {
+  border-color: #155fa0;
+}
+
+.input::placeholder {
+  color: #7c7c8a;
+}
+
+@media (max-width: 576px) {
+  .input::placeholder {
+    font-size: 0.8rem;
+  }
+}
