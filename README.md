@@ -1,77 +1,97 @@
-# React + TypeScript + Vite
+# GitHub Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação para buscar usuários do GitHub, visualizar seus detalhes e explorar repositórios.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** com **TypeScript**
+- **Vite** como bundler
+- **React Router 8** para navegação
+- **Axios** para requisições HTTP
+- **Bootstrap 5** + **Bootstrap Icons** para estilização
+- **CSS Modules** para estilos com escopo por componente
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Buscar usuário do GitHub pelo nome
+- Visualizar detalhes do usuário (avatar, bio, e-mail, seguidores e seguindo)
+- Listar repositórios ordenados por número de estrelas
+- Filtrar repositórios por nome
+- Alterar a ordenação da listagem (mais estrelas, menos estrelas, A→Z, Z→A)
+- Ver detalhes de um repositório (nome, descrição, estrelas, linguagem)
+- Acessar o repositório diretamente no GitHub
 
-Note: This will impact Vite dev & build performances.
+## Pré-requisitos
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/) v22 ou superior
+- npm v10 ou superior
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Instalação
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Clone o repositório:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/Olinadss/desbravadorsoftware.git
+cd desbravadorsoftware
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Instale as dependências:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Rodando o projeto
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Acesse em [http://localhost:5173](http://localhost:5173)
+
+## Build para produção
+
+```bash
+npm run build
+```
+
+Os arquivos gerados ficam na pasta `dist/`.
+
+Para visualizar o build localmente:
+
+```bash
+npm run preview
+```
+
+## Estrutura de pastas
 
 ```
+src/
+├── components/       # Componentes reutilizáveis (Button, Input, Header, Sidebar...)
+├── hooks/            # Hooks personalizados (useHome, useRepoDetails, useSearch)
+├── pages/            # Páginas da aplicação (Home, RepoDetails)
+├── routes/           # Configuração das rotas
+├── service/          # Serviço de comunicação com a API do GitHub
+├── utils/            # Utilitários (mapa de cores de linguagens)
+└── main.tsx          # Entrada da aplicação
+```
+
+## Rotas
+
+| Rota                             | Descrição                                    |
+| -------------------------------- | -------------------------------------------- |
+| `/`                              | Página inicial com busca                     |
+| `/user/:username`                | Perfil do usuário e listagem de repositórios |
+| `/user/:username/repo/:repoName` | Detalhes de um repositório                   |
+
+## API
+
+O projeto consome a [API REST do GitHub](https://docs.github.com/en/rest) sem autenticação.
+
+> **Atenção:** sem autenticação, o limite é de **60 requisições por hora** por IP. Se atingir o limite, aguarde alguns instantes antes de tentar novamente.
+
+## Demo
+
+Acesse a aplicação em produção: [https://git-hub-repo-finder-theta.vercel.app/user/olinadss]
