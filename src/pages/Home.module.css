@@ -14,3 +14,26 @@
   flex-direction: column;
   gap: 0.75rem;
 }
+
+.wrapper {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 286px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.repoList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 767.98px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    margin: 1rem auto;
+  }
+}
