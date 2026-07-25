@@ -20,8 +20,6 @@ export function Home() {
     notFound,
   } = useHome();
 
-  console.log("notFound", notFound);
-
   return (
     <>
       <Header

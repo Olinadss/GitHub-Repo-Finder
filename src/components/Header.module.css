@@ -25,7 +25,7 @@
 
 .title {
   font-size: 1rem;
-  color: #e1e1e6;
+  color: var(--gray-300);
 }
 
 @media (max-width: 576px) {

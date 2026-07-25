@@ -100,7 +100,7 @@
 }
 
 .githubLink:hover {
-  background: #155fa0;
+  background: var(--blue-500);
   color: #fff;
 }
 
