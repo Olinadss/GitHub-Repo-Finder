@@ -1,13 +1,17 @@
 import { Button } from "./Button";
 import styles from "./Header.styles.module.css";
+import { Input } from "./Input";
 
 export function Header() {
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
-        <i className={"bi bi-github"}></i>
+        <i className="bi bi-github"></i>
       </div>
-      <Button title="Buscar" />
+      <div className={styles.searchBar}>
+        <Input placeholder="Digite um usuário do GitHub..." />
+        <Button title="Buscar" />
+      </div>
     </div>
   );
 }
