@@ -41,12 +41,12 @@
   display: block;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #e1e1e6;
+  color: var(--gray-300);
 }
 
 .profile span {
   font-size: 1rem;
-  color: #7c7c8a;
+  color: var(--gray-700);
 }
 
 .followers {
@@ -55,7 +55,7 @@
   align-items: center;
   gap: 6px;
   font-size: 0.875rem;
-  color: #7c7c8a;
+  color: var(--gray-600);
 }
 
 .followers i {
@@ -65,14 +65,14 @@
 
 .followers strong {
   display: inline;
-  color: #e1e1e6;
+  color: var(--gray-300);
   font-weight: 600;
 }
 
 .followers span::after {
   content: " ·";
   margin-left: 6px;
-  color: #7c7c8a;
+  color: var(--gray-600);
 }
 
 .followers span:last-child::after {
@@ -96,5 +96,5 @@
 
 .email {
   font-size: 0.875rem;
-  color: #c4c4cc;
+  color: var(--gray-300);
 }

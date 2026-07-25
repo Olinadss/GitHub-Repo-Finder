@@ -1,8 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: #202024;
-  border: 1px solid #323238;
+  background: var(--gray-800);
+  border: 1px solid var(--gray-700);
   border-radius: 8px;
   padding: 1.25rem;
   transition: border-color 0.2s;
@@ -10,7 +10,7 @@
 }
 
 .card:hover {
-  border-color: #155fa0;
+  border-color: var(--blue-500);
 }
 
 .content {
@@ -22,14 +22,14 @@
 .name {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #e1e1e6;
+  color: var(--gray-300);
   margin: 0 0 8px;
   text-decoration: none;
 }
 
 .description {
   font-size: 0.875rem;
-  color: #c4c4cc;
+  color: var(--gray-300);
   line-height: 1.5;
   margin: 0 0 16px;
 }
@@ -39,7 +39,7 @@
   align-items: center;
   gap: 16px;
   font-size: 0.875rem;
-  color: #7c7c8a;
+  color: var(--gray-500);
 }
 
 .stars {
@@ -49,7 +49,7 @@
 }
 
 .stars i {
-  color: #f7b955;
+  color: var(--yellow-500);
 }
 
 .language {
@@ -72,8 +72,8 @@
   padding: 8px 16px;
   border-radius: 8px;
   background: transparent;
-  border: 1px solid #155fa0;
-  color: #155fa0;
+  border: 1px solid var(--blue-500);
+  color: var(--blue-500);
   font-size: 0.875rem;
   text-decoration: none;
   width: fit-content;
