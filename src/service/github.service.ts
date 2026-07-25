@@ -35,7 +35,7 @@ export class ServiceGithub {
       validateStatus: (status) => status < 500,
     });
 
-    if (response.status === 404) {
+    if (response.status !== 200) {
       return null;
     }
 

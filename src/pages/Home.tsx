@@ -28,30 +28,38 @@ export function Home() {
         handleSubmit={handleSubmit}
       />
 
-      {notFound && <UserNotFound />}
-
-      {userGitHub && (
-        <div className={styles.wrapper}>
-          <Sidebar userGitHub={userGitHub} />
-          <main>
-            <RepoListFilter
-              count={filteredAndSortedRepos.length}
-              search={filterName}
-              sort={sort}
-              onSearchChange={handleFilterChange}
-              onSortChange={handleSortChange}
-            />
-            <div className={styles.repoList}>
-              {filteredAndSortedRepos.map((repo) => (
-                <CardListRepo
-                  key={repo.id}
-                  repo={repo}
-                  username={userGitHub.login}
-                />
-              ))}
-            </div>
-          </main>
-        </div>
+      {notFound ? (
+        <UserNotFound />
+      ) : (
+        userGitHub && (
+          <div className={styles.wrapper}>
+            <Sidebar userGitHub={userGitHub} />
+            <main>
+              <RepoListFilter
+                count={filteredAndSortedRepos.length}
+                search={filterName}
+                sort={sort}
+                onSearchChange={handleFilterChange}
+                onSortChange={handleSortChange}
+              />
+              <div className={styles.repoList}>
+                {filteredAndSortedRepos.length === 0 ? (
+                  <p className={styles.emptyRepos}>
+                    Nenhum repositório encontrado.
+                  </p>
+                ) : (
+                  filteredAndSortedRepos.map((repo) => (
+                    <CardListRepo
+                      key={repo.id}
+                      repo={repo}
+                      username={userGitHub.login}
+                    />
+                  ))
+                )}
+              </div>
+            </main>
+          </div>
+        )
       )}
     </>
   );
