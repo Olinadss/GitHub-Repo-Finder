@@ -1,0 +1,44 @@
+.container {
+  background: var(--gray-800);
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 70rem;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2rem;
+}
+
+.title {
+  font-size: 1rem;
+  color: #e1e1e6;
+}
+
+@media (max-width: 576px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .icon {
+    width: 100%;
+  }
+
+  .searchBar {
+    width: 100%;
+    max-width: 100%;
+  }
+}

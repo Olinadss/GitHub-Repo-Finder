@@ -17,3 +17,13 @@
 .input:focus {
   border-color: #155fa0;
 }
+
+.input::placeholder {
+  color: #7c7c8a;
+}
+
+@media (max-width: 576px) {
+  .input::placeholder {
+    font-size: 0.8rem;
+  }
+}

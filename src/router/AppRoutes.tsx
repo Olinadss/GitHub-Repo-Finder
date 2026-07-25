@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router";
-import { MainLayout } from "../layouts/MainLayout";
+import { Home } from "../pages/Home";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout />}></Route>
+      <Route path="/" element={<Home />}></Route>
     </Routes>
   );
 }
