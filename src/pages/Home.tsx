@@ -11,7 +11,11 @@ export function Home() {
     handleSearchChange,
     handleSubmit,
     userGitHub,
-    userReposGitHub,
+    filterName,
+    sort,
+    handleFilterChange,
+    handleSortChange,
+    filteredAndSortedRepos,
   } = useHome();
 
   return (
@@ -26,17 +30,20 @@ export function Home() {
           <Sidebar userGitHub={userGitHub} />
           <main>
             <RepoListFilter
-              count={8}
-              onSearchChange={() => {}}
-              search=""
-              sort="teste"
-              onSortChange={() => {}}
+              count={filteredAndSortedRepos.length}
+              search={filterName}
+              sort={sort}
+              onSearchChange={handleFilterChange}
+              onSortChange={handleSortChange}
             />
             <div className={styles.repoList}>
-              {userReposGitHub &&
-                userReposGitHub.map((repo) => (
-                  <CardListRepo key={repo.id} repo={repo} />
-                ))}
+              {filteredAndSortedRepos.map((repo) => (
+                <CardListRepo
+                  key={repo.id}
+                  repo={repo}
+                  username={userGitHub.login}
+                />
+              ))}
             </div>
           </main>
         </div>

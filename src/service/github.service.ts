@@ -21,9 +21,10 @@ export interface IGetReposUserGitHub {
   id: number;
   name: string;
   description: string | null;
+  full_name: string;
   html_url: string;
   language: string;
-  stargazers_count: string;
+  stargazers_count: number;
 }
 
 export class ServiceGithub {
@@ -36,6 +37,11 @@ export class ServiceGithub {
 
   async getReposUserGitHub(username: string): Promise<IGetReposUserGitHub[]> {
     const { data } = await api.get(`/users/${username}/repos`);
+    return data;
+  }
+
+  async getReposDetailGitHub(repoFullName: string) {
+    const { data } = await api.get(`/repos/${repoFullName}`);
     return data;
   }
 }
