@@ -1,0 +1,13 @@
+.container {
+  background: var(--gray-800);
+  width: 100%;
+  padding: 1.25rem 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 2rem;
+}
