@@ -8,7 +8,6 @@ Aplicação para buscar usuários do GitHub, visualizar seus detalhes e explorar
 - **Vite** como bundler
 - **React Router 8** para navegação
 - **Axios** para requisições HTTP
-- **Bootstrap 5** + **Bootstrap Icons** para estilização
 - **CSS Modules** para estilos com escopo por componente
 
 ## Funcionalidades
@@ -94,4 +93,4 @@ O projeto consome a [API REST do GitHub](https://docs.github.com/en/rest) sem au
 
 ## Demo
 
-Acesse a aplicação em produção: [https://git-hub-repo-finder-theta.vercel.app/user/olinadss]
+Acesse a aplicação em produção: [https://git-hub-repo-finder-theta.vercel.app/]
